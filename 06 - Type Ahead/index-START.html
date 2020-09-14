@@ -22,19 +22,22 @@ fetch(endpoint)
   .then(blob => blob.json())
   .then(data => cities = data);
 
-function findMatches(wordToMatch, cities) {
-  const regex = new RegExp(wordToMatch, 'gi');
-  return cities.filter(place => {
-    return place.city.match(regex) || place.state.match(regex);
-  })
-}
+// function findMatches(wordToMatch, cities) {
+//   const regex = new RegExp(wordToMatch, 'gi');
+//   return cities.filter(place => {
+//     return place.city.match(regex) || place.state.match(regex);
+//   })
+// }
 
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 function displayMatches() {
-  const matchArray = findMatches(this.value, cities);
+  const regex1 = new RegExp(this.value, 'gi');
+  const matchArray = cities.filter(place => {
+    return place.city.match(regex1) || place.state.match(regex1);
+  })
   const html = matchArray.map(place => {
     const regex = new RegExp(this.value, 'gi');
     const cityName = place.city.replace(regex, `<span class='hl'>${this.value}</span>`);
