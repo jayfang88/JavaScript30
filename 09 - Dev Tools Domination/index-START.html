@@ -9,7 +9,7 @@
   <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
   <script>
-    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'Hugo', age: 8 }];
 
     function makeGreen() {
       const p = document.querySelector('p');
@@ -36,18 +36,54 @@
     console.error('FUCKIN ERROR')
 
     // Info
+    console.info('heres some info')
 
     // Testing
+    console.assert(1 === 2, 'nope try again');
+    const p = document.querySelector('p');
+    console.assert(p.classList.contains('ouch'), 'wrong node grabbed');
 
     // clearing
+    console.clear();
 
     // Viewing DOM Elements
+    console.log(p);   // this just shows/logs the paragraph element
+    console.dir(p);   // this provides the dropdown that shows all methods and 
+                      // properties of the element
 
     // Grouping together
+    dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age*7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+    })
 
     // counting
+    console.count('Justin');
+    console.count('Justin');
+    console.count('Fang');
+    console.count('Fang');
+    console.count('Fang');
+    console.count('Justin');
+    console.count('Justin');
+    console.count('Fang');
+    console.count('Justin');
+    console.count('Fang');
+    console.count('Fang');
 
     // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/jayfang88') 
+      .then(blob => blob.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
+
+      // table
+      console.table(dogs);
 
   </script>
 </body>
