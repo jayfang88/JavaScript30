@@ -21,13 +21,19 @@
     console.log('regular');
 
     // Interpolated
-    console.log('Hello, I am an %s string!', 'interpolated')
+    console.log('Hello, I am an %s string!', 'interpolated');
+    let int = 'interpolated'
+    console.log(`Hello, I am another ${int} string!`);
 
     // Styled
+    // use %c before the string
+    console.log('%c I am some styled text', 'font-size: 20px; background-color:gray; color: white')
 
     // warning!
+    console.warn('OH NOOOO')
 
     // Error :|
+    console.error('FUCKIN ERROR')
 
     // Info
 
